@@ -44,6 +44,14 @@ LABEL org.opencontainers.image.title="openwiki" \
       org.opencontainers.image.licenses="MIT"
 
 USER openwiki
+
+ENV LANGCHAIN_TRACING_V2="false"
+ENV OPENAI_COMPATIBLE_BASE_URL="https://routellm.feg.cn/v1"
+ENV OPENAI_COMPATIBLE_API_KEY="sk-123456"
+ENV OPENWIKI_PROVIDER="openai-compatible"
+ENV OPENWIKI_MODEL_ID="MiniMax-M3"
+
 # Mount the repository you want documented here.
 WORKDIR /workspace
-ENTRYPOINT ["node", "/opt/openwiki/dist/cli.js"]
+ENTRYPOINT ["node", "/opt/openwiki/dist/cli/cli.js"]
+
