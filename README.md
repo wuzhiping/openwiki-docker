@@ -1,4 +1,8 @@
 ```
+mkdir -p workspace/home
+cd workspace & git clone ... notebook
+```
+```
   openwiki:
     image: shawoo/openwiki
     user: root
@@ -11,7 +15,9 @@
       HOME: "/workspace/home"
     command: visualize home  --port 4321 --no-open
 ```
-
+```
+docker compose run openwiki openwiki personal --init
+```
 
 # openwiki-docker
 
