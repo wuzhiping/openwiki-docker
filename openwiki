@@ -1,0 +1,3 @@
+#!/bin/sh
+export UV_PROJECT_ENVIRONMENT=venv
+exec node /opt/openwiki/dist/cli/cli.js "$@"
