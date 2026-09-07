@@ -1,3 +1,18 @@
+```
+  openwiki:
+    image: shawoo/openwiki
+    user: root
+    ports:
+      - "4321:4321"
+    volumes:
+      #- ./server.js:/opt/openwiki/dist/visualize/server.js
+      - ./workspace:/workspace
+    environment:
+      HOME: "/workspace/home"
+    command: visualize home  --port 4321 --no-open
+```
+
+
 # openwiki-docker
 
 Docker packaging for [OpenWiki](https://github.com/langchain-ai/openwiki) - the LangChain team's CLI that generates and maintains agent-facing wikis for codebases using a DeepAgents documentation agent.
