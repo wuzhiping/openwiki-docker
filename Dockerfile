@@ -33,6 +33,11 @@ COPY --from=build /app/LICENSE /opt/openwiki/LICENSE
 COPY --from=build /app/node_modules /opt/openwiki/node_modules
 COPY --from=build /app/dist /opt/openwiki/dist
 
+COPY --from=build /app/skills /opt/openwiki/skills
+COPY --from=build /app/integrations /opt/openwiki/integrations
+
+# COPY server.js /opt/openwiki/dist/visualize/server.js
+
 # Host-side install scripts, extractable by scripts/install.sh bootstraps.
 COPY scripts/openwiki-setup.sh /opt/openwiki/host/openwiki-setup.sh
 COPY scripts/lib/ /opt/openwiki/host/lib/
@@ -44,6 +49,9 @@ LABEL org.opencontainers.image.title="openwiki" \
       org.opencontainers.image.licenses="MIT"
 
 USER openwiki
+
+COPY ./openwiki /usr/local/bin/openwiki
+RUN chmod +x /usr/local/bin/openwiki
 
 ENV LANGCHAIN_TRACING_V2="false"
 ENV OPENAI_COMPATIBLE_BASE_URL="https://routellm.feg.cn/v1"
